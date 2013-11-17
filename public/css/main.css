@@ -1,0 +1,622 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: Tahoma;
+    vertical-align: top;
+}
+
+p, a {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face{ 
+    font-family: "Harabara";
+    src: url('http://www.fontsforweb.com/public/fonts/1089/Harabara.eot');
+    src: local("Harabara"), url('http://www.fontsforweb.com/public/fonts/1089/Harabara.woff') format("woff"), url('http://www.fontsforweb.com/public/fonts/1089/Harabara.ttf') format("truetype");
+}
+
+.ch-grid {
+    margin: 20px 0 0 0;
+    padding: 0;
+    list-style: none;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+ 
+.ch-grid:after,
+.ch-item:before {
+    content: '';
+    display: table;
+}
+ 
+.ch-grid:after {
+    clear: both;
+}
+ 
+.ch-grid li {
+    width: 140px;
+    height: 140px;
+    display: inline-block;
+    margin: 20px;
+}
+
+.ch-info {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+    transform: scale(0);
+    backface-visibility: hidden;
+}
+
+.ch-item {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    cursor: default;
+    background: url('/images/menu_button_inactive.png') no-repeat;
+}
+
+.ch-info h3 {
+    color: #fff;
+    text-transform: uppercase;
+    position: relative;
+    letter-spacing: 2px;
+    font-size: 22px;
+    margin: 0 30px;
+    padding: 65px 0 0 0;
+    height: 110px;
+    font-family: 'Open Sans', Arial, sans-serif;
+    text-shadow: 
+        0 0 1px #fff, 
+        0 1px 2px rgba(0,0,0,0.3);
+}
+ 
+.ch-info p {
+    color: #fff;
+    padding: 10px 5px;
+    font-style: italic;
+    margin: 0 30px;
+    font-size: 12px;
+    border-top: 1px solid rgba(255,255,255,0.5);
+}
+ 
+.ch-info p a {
+    display: block;
+    color: rgba(255,255,255,0.7);
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding-top: 4px;
+    font-family: 'Open Sans', Arial, sans-serif;
+}
+ 
+.ch-info p a:hover {
+    color: rgba(255,242,34, 0.8);
+}
+
+.ch-item:hover {
+    box-shadow: 
+        inset 0 0 0 110px rgba(200,95,66, 0.4),
+        inset 0 0 0 16px rgba(255,255,255,0.8),
+        0 1px 2px rgba(0,0,0,0.1);
+}
+
+.ch-item:hover .ch-info {
+    opacity: 1;
+    transform: scale(1);    
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #eee2c1;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #eee2c1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #eee2c1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #eee2c1;
+}
+
+
+
+
+
+
+
+
+
+
+
+#home_content {
+    width: 100%;
+    height: 800px;
+    margin: 0 auto;
+    background-image: url("/images/home_background.jpg");
+    background-repeat: repeat-x;
+    background-size: contain;
+}
+
+#home_content .home {
+    width: 900px;
+    margin: 0 auto;
+    height: 800px;
+}
+
+#home_content .home .header {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+}
+
+#home_content .home .header p {
+    padding-top: 10px;
+    font-family: "Harabara";
+    font-size: 30px;
+    color: #fff;
+    font-size: 24px;
+    z-index:0;
+}
+
+#home_content .home .header p span {
+    font-size: 60px;
+}
+
+#home_content .home .menu {
+    padding: 0;
+    margin-top: 80px;
+    width: 100%;
+}
+
+#home_content .home .menu ul, #home_content .home ul li {
+    list-style: none;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#home_content .home .menu .button {
+    display: inline-block;
+    margin-top: 30px;
+    width: 140px;
+    height: 140px;
+    background-image: url('/images/menu_button_inactive.png');
+    background-repeat: no-repeat;
+}
+
+#home_content .home .menu .button .icon {
+    width: 16px;
+    height: 16px;
+    margin: 35px auto 0 auto;
+}
+
+#home_content .home .menu .button p {
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 15px;
+    font-family: Arial;
+}
+
+#home_content .home .menu .button:hover {
+    display: inline-block;
+    margin-top: 30px;
+    width: 140px;
+    height: 140px;
+    background-image: url('/images/menu_button_active.png');
+    background-repeat: no-repeat;
+}
+
+#home_content .home .menu .computer {
+    display: inline-block;
+    vertical-align: top;
+    margin: 20px 18px 0 18px;
+    width: 284px;
+    height: 285px;
+    background-image: url('/images/computer.png');
+    background-repeat: no-repeat;
+}
+
+#home_content .home .langs {
+    width: 400px;
+    margin: 30px auto 0 auto;
+}
+
+#home_content .home .langs .lang {
+    width: 199px;
+    height: 40px;
+    margin-left: 1px;
+    background-image: url('/images/langs_background.png');
+    background-repeat: repeat;
+    display: inline-block;
+}
+
+#home_content .home .langs .lang .flag {
+    width: 50px;
+    display: inline-block;
+    height: 40px;
+}
+
+#home_content .home .langs .lang .flag img {
+    display: block;
+    margin: 14px auto 0 auto;
+}
+
+#home_content .home .langs .lang .name {
+    width: 146px;
+    height: 40px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#home_content .home .langs .lang .name a {
+    display: block;
+    color: #fff;
+    margin-top: 12px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+#home_content .home .langs .lang .name a:hover {
+    text-decoration: underline;
+}
+
+#home_content .home .scroll {
+    width: 80px;
+    height: 80px;
+    margin: 30px auto;
+}
+
+#home_content .home .scroll a {
+    width: 80px;
+    height: 80px;
+    display: block;
+    background-image: url('/images/home_scroll_down.png');
+    background-repeat: no-repeat;
+}
+
+.page_menu {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    border-bottom: 1px solid #e8e7e9;
+    display: none;
+    position: absolute;
+    z-index: 1000;
+}
+
+.page_menu .menu_content {
+    width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.page_menu .menu_content ul li {
+    list-style: none;
+    display: inline-block;
+}
+
+.page_menu .menu_content ul li a {
+    width: 74px;
+    height: 26px!important;
+    display: inline-block;
+    color: #676767;
+    text-decoration: none;
+    padding: 12px 0 0 50px;
+    margin: 0 10px;
+}
+
+.page_menu .menu_content ul li a.home {
+    background: url('/images/home_button.png') no-repeat;
+  width: 80px !important;
+}
+
+.page_menu .menu_content ul li a.offer {
+    background: url('/images/offer_button.png') no-repeat;
+}
+
+.page_menu .menu_content ul li a.folio {
+    background: url('/images/folio_button.png') no-repeat;
+}
+
+.page_menu .menu_content ul li a.contact {
+    background: url('/images/contact_button.png') no-repeat;
+}
+
+#offer_content {
+    padding-top: 30px;
+    width: 100%;
+    height: 810px;
+    background-image: url('/images/offer_background.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center top;
+}
+
+#offer_content .offer {
+    width: 1000px;
+    height: 500px;
+    margin: 0 auto;
+}
+
+#offer_content .offer .header {
+    margin: 30px 0 10px 0;
+    width: 1000px;
+    text-align: center;
+}
+
+#offer_content .offer .header p {
+    padding-top: 20px;
+    font-family: "Harabara";
+    font-size: 30px;
+    color: #00699c;
+    font-size: 50px;
+}
+
+#offer_content .offer .header p span {
+    padding: 0 3px;
+    font-size: 72px;
+}
+
+#offer_content .offer .offers {
+    margin-top: 20px;
+    width: 563px;
+    height: 297px;
+    background-image: url('/images/offers.png');
+}
+
+#offer_content .offer .offers .head {
+    padding: 30px 0 0 20px;
+}
+
+#offer_content .offer .offers .head p {
+    color: #fff;
+    font-size: 28px;
+    font-family: Arial;
+}
+
+#offer_content .offer .offers ul {
+    display: block;
+    padding: 0;
+    margin: 28px 0 0 30px;
+}
+
+#offer_content .offer .offers ul li {
+    display: block;
+    padding: 8px 0;
+    list-style: none;
+    color: #fff;
+
+}
+
+#offer_content .offer .offers ul li p {
+    display: inline-block;
+    margin-left: 10px;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+#projects_content {
+    padding-top: 20px;
+    width: 100%;
+    background-image: url('/images/projects_background.png');
+    background-repeat: repeat-x;
+}
+
+#projects_content .projects {
+    padding-top: 25px;
+    width: 945px;
+    margin: 0 auto;
+    height: 996px;
+}
+
+#projects_content .projects .head p {
+    text-align: center;
+    padding: 30px 0;
+    font-family: "Harabara";
+    font-size: 30px;
+    color: #fff;
+    font-size: 24px;
+}
+
+#projects_content .projects .head p span {
+    font-size: 60px;
+}
+
+#contact_content {
+    padding-top: 20px;
+    background-color: #bca25c;
+    width: 100%;
+    padding-bottom: 40px;
+}
+
+#contact_content .contact {
+    width: 970px;
+    margin: 0 auto;
+}
+
+#contact_content .contact .head p {
+    text-align: center;
+    padding: 50px 0;
+    font-family: "Harabara";
+    font-size: 42px;
+    color: #fff;
+}
+
+#contact_content .contact .head p span {
+    font-size: 60px;
+}
+
+#contact_content .contact .left {
+    width: 483px;
+    height: 500px;
+    display: inline-block;
+}
+
+#contact_content .contact .left .faces {
+    width: 483px;
+    height: 313px;
+    background: url('/images/faces.png') no-repeat;
+}
+
+#contact_content .contact .left .phones {
+    padding: 40px 0;
+    width: 483px;
+    height: 124px;
+    background: url('/images/phones.png') no-repeat;
+}
+
+#contact_content .contact .left .phones div .img {
+    width: 50px;
+    text-align: center;
+    display: inline-block;
+    margin: 0 0 0 20px;
+}
+
+#contact_content .contact .left .phones div {
+    width: 300px;
+    height: 40px;
+}
+
+#contact_content .contact .left .phones div span {
+    font-size: 14px;
+    font-family: Arial;
+    color: #fff;
+}
+
+#contact_content .contact .right {
+    width: 487px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#contact_content .contact .right .input {
+    margin-top: 10px;
+    background: url('/images/input_background.png') no-repeat;
+    background-position: bottom;
+    width: 490px;
+    height: 40px;
+}
+
+#contact_content .contact .right .input input {
+    margin: 0 0 0 30px;
+    width: 460px;
+    height: 20px;
+    background: none;
+    padding: 3px 0;
+    font-size: 14px;
+    font-family: Arial;
+    color: #eee2c1;
+    font-weight: normal;
+    border:none;
+}
+
+#contact_content .contact .right .success {
+    padding: 10px;
+    width: 100%;    
+    text-align:center;
+    display:none;
+    color: #468847;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    border-radius: 4px;
+}
+
+#contact_content .contact .right .error {
+    position: relative;
+    padding: 10px;
+    color: #b94a48;
+    width: 100%;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    border-radius: 4px;
+    text-align: center;
+    display: none;
+}
+
+#contact_content .contact .right .textarea {
+    margin-top: 49px;
+    width: 481px;
+    height: 284px;
+    background: url('/images/message.png') no-repeat;
+}
+
+#contact_content .contact .right .textarea textarea {
+    line-height: 37px;
+    border:none;
+    padding: 10px;
+    margin: 12px 0 0 17px;
+    width: 424px;
+    height: 200px;
+    background: url('/images/textarea.png') repeat;
+    color: #fff;
+    font-family: Arial;
+    font-size: 14px;
+    overflow: auto;
+}
+
+#contact_content .contact .right .button {
+    margin: 0 0 0 336px;
+    width: 144px;
+    height: 40px;
+}
+
+#contact_content .contact .right .button input {
+    width: 146px;
+    height: 42px;
+    background: url('/images/send_message.png') no-repeat;
+    border: none;
+    color: #eee2c1;
+    font-size: 13px;
+  cursor: pointer;
+}
+
+#response {
+    width: 100%;
+    height: 200px;
+    border-top: 1px solid #ab9354;
+    background-color: #b19857;
+}
+
+#response .response .head p {
+    text-align: center;
+    padding: 50px 0;
+    font-family: "Harabara";
+    color: #fff;
+    font-size: 52px;
+}
+
+#response .response .head p span {
+    font-size: 70px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment  {
+    display: none;
+}
+ 
+::-webkit-scrollbar-track-piece  {
+    background-color: #3b3b3b;
+    -webkit-border-radius: 6px;
+}
+ 
+::-webkit-scrollbar-thumb:vertical {
+    -webkit-border-radius: 6px;
+    background: #666 url('/images/scroll.png') no-repeat center;
+}
