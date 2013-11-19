@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'my_tube',
+			'database'  => 'rest_api',
 			'username'  => 'root',
 			'password'  => 'root',
 			'charset'   => 'utf8',

@@ -1,6 +1,9 @@
 <?php
 
-class UsersController extends BaseController 
+namespace App\Modules\Admin\Controllers;
+use View;
+
+class UsersController extends \BaseController 
 {
     public function __construct()
     {
@@ -23,21 +26,21 @@ class UsersController extends BaseController
     {
         if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password')))) {
 
-            return Redirect::to('/')->with('message', 'You are now logged in!');
+            return Redirect::to('users/dashboard')->with('message', 'You are now logged in!');
         } else {
    
-            return Redirect::to('users/login')->with('error', 'Your username/password combination was incorrect')->withInput();
+            return Redirect::to('users/login')->with('message', 'Your username/password combination was incorrect')->withInput();
 }
     }
 
     public function getRegister() 
     {
-        return View::make('users.register');
+        $this->layout->content = View::make('users.register');
     }
 
     public function getLogin()
     {
-        return View::make('users.login');
+        $this->layout->content = View::make('users.login');
     }
 
     public function postCreate() 
@@ -57,7 +60,7 @@ class UsersController extends BaseController
         }
         else {
 
-            return Redirect::to('users/register')->with('error', 'The following errors occurred')->withErrors($validator)->withInput();
+            return Redirect::to('users/register')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();
         }
     }
 }

@@ -1,8 +1,8 @@
 
-function Page()
-{
-    this.init = function() 
-    {
+var Page = {
+
+    init: function() {
+
         $(window).scroll(function() {
             var offset = $('.page_menu').offset();
 
@@ -14,16 +14,37 @@ function Page()
                 $('.page_menu').hide();
         });
 
-        $('.page_menu, .scroll, .menu').onePageNav({
-            begin: function() {
-                $('.page_menu').fadeOut('fast');
-            },
-            end: function() {
-                if($(window).scrollTop() > 5) 
-                    $('.page_menu').fadeIn('slow');
+    },
+
+    addBundle: function() {
+
+        var nameInput = $('#add_bundle_input');
+
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            data: {'name': nameInput.val()},
+            url: "/bundles/create",
+
+        }).success(function(result) {
+
+            $('#add_bundle').find('.alert').hide();
+                        
+            if(result.status == 'ok') {
+
+                $('#add_bundle').find('.alert-success').html(result.message).fadeIn();
             }
+            else if(result.status == 'error') {
+
+                $('#add_bundle').find('.alert-danger').html(result.message).fadeIn();   
+            }
+
+            nameInput.val('');
         });
-    };
+
+        return false;
+
+    }
 };
 
 function ContactForm()
@@ -75,8 +96,7 @@ function ContactForm()
 // init methods
 $(window).load(function(){
     // init page
-    var page = new Page();
-    page.init();
+    Page.init();
 
     // init contact form
     var contact_form = new ContactForm();
