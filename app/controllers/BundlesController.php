@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Bundle;
+
 class BundlesController extends BaseController {
     
     public function __construct()

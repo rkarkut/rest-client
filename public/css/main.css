@@ -4,12 +4,29 @@
     margin-top: 70px;
 }
 
+.hide {
+    display: none;
+}
+
 .list-group-subitems > a {
     position: relative;
-display: block;
-padding: 10px 15px;
-margin-bottom: -1px;
-background-color: #fff;
-border: 1px solid #ddd;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
 
+.add_bundle_request {
+    text-align: right;
+}
+
+.add_bundle_request a {
+    margin-top: 6px;
+    padding: 3px;
+    display: inline-block;
+}
+
+.list-group-subitems {
+    display: none;
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Bundle;
+
 class HomeController extends BaseController {
     
     public function __construct()
@@ -11,7 +13,6 @@ class HomeController extends BaseController {
 	public function getHome()
 	{
         $bundles = Bundle::whereRaw('user_id = ?', array(Auth::user()->id))->get();
-
 
         return View::make('home', array('bundles' => $bundles));
 	}

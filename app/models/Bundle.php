@@ -1,6 +1,8 @@
 <?php
 
-class Bundle extends Eloquent {
+namespace App\Models;
+
+class Bundle extends \Eloquent {
 
     /**
      * The database table used by the model.
@@ -8,5 +10,10 @@ class Bundle extends Eloquent {
      * @var string
      */
     protected $table = 'bundles';
+
+    public function requests()
+    {
+        return $this->hasMany('App\Models\Request');
+    }
 
 }
