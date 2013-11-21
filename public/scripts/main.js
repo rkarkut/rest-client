@@ -21,6 +21,10 @@ var Page = {
             return false;
         });
 
+        $('.send-request').bind('click', function() {
+            Page.sendRequest();
+        })
+
         $(window).scroll(function() {
             var offset = $('.page_menu').offset();
 
@@ -148,7 +152,24 @@ var Page = {
 
             }
         });
+    },
 
+    sendRequest: function() {
+        $('#request_response').html("<img src='/images/ajax-loader.gif' />");
+        var url = $('#request_url').val();
+        var method = $('#request_method option:selected').val();
+        var request = $('#request_text').val();
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data: {'url': url, 'method': method, 'request': request},
+            url: "/requests/make-request",
+
+        }).success(function(result) {
+
+            $('#request_response').html(result.response);
+        });
     }
 };
 

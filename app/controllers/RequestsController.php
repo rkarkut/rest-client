@@ -72,4 +72,39 @@ class RequestsController extends BaseController {
         return Response::json(array('status' => 'ok', 'request'=>json_decode($request)));
 
     }
+
+    public function makeRequest()
+    {
+        $response = null;
+
+        $data = Input::get();
+
+        $curl = curl_init(); 
+
+        curl_setopt($curl, CURLOPT_URL, $data['url']); // url
+        curl_setopt($curl, CURLOPT_POST, 1); 
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); 
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data['request']); 
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+
+        curl_setopt($curl, CURLOPT_USERPWD, 'username:password');
+        curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_ANY);                    
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);                          
+        curl_setopt($curl, CURLOPT_USERAGENT, 'Sample Code');
+
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array(                                                                          
+            'Content-Type: application/json',                                                                                
+            'Content-Length: ' . strlen($data['request']))                                                                       
+        );      
+
+        $response = curl_exec($curl); 
+        
+        curl_close($curl); 
+
+        $data = json_decode($response);
+        $response = "<pre>".json_encode($data, JSON_PRETTY_PRINT)."</pre>";
+
+
+        return Response::json(array('stauts' => 'ok', 'response' => $response));
+    }
 }

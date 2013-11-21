@@ -30,3 +30,15 @@
 .list-group-subitems {
     display: none;
 }
+
+#request_response img {
+    margin: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+#request_response pre {
+    border: none;
+    background-color: #fff;
+    color: blue;
+}

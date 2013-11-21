@@ -67,23 +67,14 @@
 
             <div class="form-group">
 
-                <button type="button" class="btn btn-primary">Send</button>
+                <button type="button" class="btn btn-primary send-request">Send</button>
                 <button type="button" class="btn btn-default">Save</button>
             </div>
 
             <div class="response">
                 <label for="request_input">Response:</label><br>
                 <section>
-                <code>
-                    {
-                        "jsonrpc": "2.0",
-                        "id": 1,
-                        "error": {
-                            "code": "-32600",
-                            "message": "Invalid login or password"
-                        }
-                    }
-                </code>
+                <div id="request_response"></div>
                 </section>
 
             </div>
