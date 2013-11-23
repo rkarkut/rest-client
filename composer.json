@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.0.*",
         "twitter/bootstrap": "*",
-        "creolab/laravel-modules": "dev-master"
+        "creolab/laravel-modules": "dev-master",
+		"barryvdh/laravel-debugbar": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

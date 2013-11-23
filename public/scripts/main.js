@@ -7,7 +7,9 @@ var Page = {
 
         $('.bundle_list>a:first').click();
 
-        Page.initLoadRequest();
+        $('.load-request').bind('click', function() {
+            Page.loadRequest(this);
+        });
 
         $('.button_add_request').bind('click', function() {
 
@@ -21,9 +23,21 @@ var Page = {
             return false;
         });
 
+        $('.button_update_bundle').bind('click', function() {
+
+            Page.updateBundle($(this));
+            return false;
+        });
+        
+        $('.button_update_request').bind('click', function() {
+
+            Page.updateRequest($(this));
+            return false;
+        });
+
         $('.send-request').bind('click', function() {
             Page.sendRequest();
-        })
+        });
 
         $(window).scroll(function() {
             var offset = $('.page_menu').offset();
@@ -38,18 +52,11 @@ var Page = {
 
     },
 
-    initLoadRequest: function() {
-
-        $('.list-group-subitems>a').bind('click', function() {
-            Page.loadRequest(this);
-        });
-    },
-
     initBundleListSlider: function() {
 
-        $('.bundle_list>a').bind('click', function() {
+        $('.bundle_list>div>a').bind('click', function() {
             $('.list-group-subitems').slideUp();
-            $(this).next('div').slideDown();
+            $(this).parent().next('div').slideDown();
         });
     },
 
@@ -83,28 +90,104 @@ var Page = {
 
     },
 
+    updateBundle: function(obj) {
+        
+        var param_name = $(obj).data('input');
+        var id = $(obj).data('id');
+
+        var bundle_name = $('#'+param_name).val();
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data: {'name': bundle_name},
+            url: "/bundles/"+id+"/update",
+
+        }).success(function(result) {
+
+            $('#'+param_name).parent('.row').parent().find('.alert').hide();
+                        
+            if(result.status == 'ok') {
+
+                $('#'+param_name).parent('.row').parent().find('.alert-success').html(result.message).fadeIn();
+            }
+            else if(result.status == 'error') {
+
+                $('#'+param_name).parent('.row').parent().find('.alert-danger').html(result.message).fadeIn();   
+            }
+        });
+
+        return false;
+
+    },
+
+    updateRequest: function(obj) {
+
+        var id = $(obj).data('id');
+
+        var container_name = "edit_request_"+id;
+
+        var container = $('#'+container_name);
+
+        var name            = $(container).find('#update_request_name');
+        var method          = $(container).find('#update_request_method');
+        var url             = $(container).find('#update_request_url');
+        var content_type    = $(container).find('#update_request_content_type');
+        var content         = $(container).find('#update_request_content');
+        var bundle          = $(container).find('#update_request_bundle');
+
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data: {
+
+                'name':             name.val(),
+                'method':           method.children(':selected').val(),
+                'url':              url.val(),
+                'content_type':     content_type.children(':selected').val(),
+                'content':          content.val(),
+                'bundle':           bundle.children(':selected').val()
+
+            },
+
+            url: "/requests/"+id+"/update",
+
+        }).success(function(result) {
+
+            $(container).find('.alert').hide();
+                        
+            if(result.status == 'ok') {
+
+                $(container).find('.alert-success').html(result.message).fadeIn();
+            }
+            else if(result.status == 'error') {
+
+                $(container).find('.alert-danger').html(result.message).fadeIn();   
+            }
+        });
+    },
+
     addRequest: function() {
 
-        var add_request_name        = $('#add_request_name');
-        var add_request_method      = $('#add_request_method');
-        var add_request_link        = $('#add_request_link');
-        var add_request_host        = $('#add_request_host');
-        var add_request_content_type= $('#add_request_content_type');
-        var add_request_content     = $('#add_request_content');
-        var add_request_bundle  = $('#add_request_bundle');
+        var name            = $('#add_request_name');
+        var method          = $('#add_request_method');
+        var url             = $('#add_request_url');
+        var content_type    = $('#add_request_content_type');
+        var content         = $('#add_request_content');
+        var bundle          = $('#add_request_bundle');
 
         $.ajax({
             type: 'GET',
             dataType: 'json',
             data: {
 
-                'name': add_request_name.val(),
-                'method': add_request_method.val(),
-                'link': add_request_link.val(),
-                'host': add_request_host.val(),
-                'content_type': add_request_content_type.val(),
-                'content': add_request_content.val(),
-                'bundle': add_request_bundle.val(),
+                'name':             name.val(),
+                'method':           method.val(),
+                'url':              url.val(),
+                'content_type':     content_type.val(),
+                'content':          content.val(),
+                'bundle':           bundle.val()
 
             },
             url: "/requests/create",
@@ -144,8 +227,9 @@ var Page = {
 
                 $('#request_content>h3:first').text(result.request.name);                
                 $('#request_method option[value="'+result.request.method+'"]').attr("selected", "selected");
-                $('#request_url').val(result.request.host+result.request.link);
+                $('#request_url').val(result.request.url);
                 $('#request_text').val(result.request.content);
+                $('.save-request').attr('data-id', id);
             }
             else {
 
@@ -170,7 +254,7 @@ var Page = {
 
             $('#request_response').html(result.response);
         });
-    }
+    },
 };
 
 function ContactForm()

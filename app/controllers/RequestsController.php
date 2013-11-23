@@ -1,20 +1,29 @@
 <?php
 
+/**
+ * Request controller.
+ * 
+ */
 use App\Models\Request;
 
 class RequestsController extends BaseController {
     
+    /**
+     * Construct
+     */
     public function __construct()
     {
-        // $this->beforeFilter('csrf', array('on'=>'post'));
-        // $this->beforeFilter('auth', array('only'=>array('postAdd')));
+        // authorize all methods.
+        $this->beforeFilter('auth', array('except'=>array()));
     }
 
+    /**
+     * Method to create new request.
+     * 
+     * @return [type] [description]
+     */
 	public function create()
 	{
-        if (Auth::check() == false)
-            return Response::json(array('status' => 'error', 'message' => 'You must be logged in.'));
-
         $data = Input::get();
 
         $errors = $this->isValid($data);
@@ -25,8 +34,7 @@ class RequestsController extends BaseController {
         $request = new Request();
         $request->name = $data['name'];
         $request->method = $data['method'];
-        $request->link = $data['link'];
-        $request->host = $data['host'];
+        $request->url = $data['url'];
         $request->content_type = $data['content_type'];
         $request->content = $data['content'];
         $request->bundle_id = $data['bundle'];
@@ -37,6 +45,12 @@ class RequestsController extends BaseController {
         return Response::json(array('status' => 'ok', 'message' => 'Bundle has been saved.'));
 	}
 
+    /**
+     * Method to check if params are valid.
+     * 
+     * @param  [type]  $data [description]
+     * @return boolean       [description]
+     */
     public function isValid($data)
     {
         $errors = array();
@@ -47,11 +61,8 @@ class RequestsController extends BaseController {
         if(empty($data['method']))
             $errors[] = 'Method can\'t be empty.';
 
-        if(empty($data['link']))
-            $errors[] = 'Link can\'t be empty.';
-
-        if(empty($data['host']))
-            $errors[] = 'Host can\'t be empty.';
+        if(empty($data['url']))
+            $errors[] = 'URL can\'t be empty.';
 
         if(empty($data['content_type']))
             $errors[] = 'Content type can\'t be empty.';
@@ -62,6 +73,12 @@ class RequestsController extends BaseController {
         return $errors;
     }
 
+    /**
+     * Method to return request details.
+     * 
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function show($id)
     {
         if(empty($id))
@@ -73,8 +90,16 @@ class RequestsController extends BaseController {
 
     }
 
+    /**
+     * Method to make request.
+     * 
+     * @return [type] [description]
+     */
     public function makeRequest()
     {
+        if (Auth::check() == false)
+            return Response::json(array('status' => 'error', 'message' => 'You must be logged in.'));
+
         $response = null;
 
         $data = Input::get();
@@ -106,5 +131,31 @@ class RequestsController extends BaseController {
 
 
         return Response::json(array('stauts' => 'ok', 'response' => $response));
+    }
+
+    /**
+     * Method to update request.
+     * 
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function updateRequest($id)
+    {
+        $data = Input::get();
+
+        $request = Request::find($id);
+
+        if(empty($request))
+            return Response::json(array('status' => 'false', 'error'=>'Request not found.'));
+
+        $request->name = $data['name'];
+        $request->method = $data['method'];
+        $request->url = $data['url'];
+        $request->content_type = $data['content_type'];
+        $request->content = $data['content'];
+        $request->bundle_id = $data['bundle'];
+
+        $request->save();
+        return Response::json(array('status' => 'ok', 'message'=>'Request has been saved.'));
     }
 }

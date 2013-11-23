@@ -8,13 +8,17 @@
     display: none;
 }
 
-.list-group-subitems > a {
+.list-group-subitems div {
     position: relative;
     display: block;
     padding: 10px 15px;
     margin-bottom: -1px;
     background-color: #fff;
     border: 1px solid #ddd;
+}
+
+.list-group-subitems div .edit {
+    float:right;
 }
 
 .add_bundle_request {
@@ -41,4 +45,18 @@
     border: none;
     background-color: #fff;
     color: blue;
+}
+
+div.list-group-item {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #357ebd;
+}
+
+div.list-group-item .edit {
+    float: right;
+}
+
+div.list-group-item a {
+    color: #fff;
 }
