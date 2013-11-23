@@ -40,7 +40,7 @@
         </div>
         <div id="request_content" class="col-md-9">
             
-            <h3>Authorize</h3>
+            <h3></h3>
 
             <div class="form-group">
 
@@ -49,7 +49,7 @@
                     <div class="col-md-9">
                         
                         <label for="request_url">URL:</label>
-                        <input class="form-control" id="request_url" type="text" value="http://vemma.v.l/mobileapi/authorize/?ver=3_0">
+                        <input class="form-control" id="request_url" type="text" value="">
 
                     </div>
                     <div class="col-md-3 request_method">
@@ -68,7 +68,7 @@
 
             <div class="form-group">
                 <label for="request_text">Request:</label>
-                <textarea class="form-control" id="request_text" rows="3">{"jsonrpc":"2.0","id":1,"method":"authorize","params":["100000201","TestApp677"]}</textarea>
+                <textarea class="form-control" id="request_text" rows="3"></textarea>
             </div>
 
             <div class="form-group">
@@ -277,7 +277,7 @@
 
                                 <div class="row">
                                     <label for="add_request_url">URL:</label>
-                                    <input type="text" id="add_request_url" class="form-control" placeholder="Name" />
+                                    <input type="text" id="add_request_url" class="form-control" placeholder="URL" />
                                 </div>
 
                                 <div class="row">

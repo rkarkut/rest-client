@@ -42,7 +42,7 @@ class RequestsController extends BaseController {
         $request->save();
 
 
-        return Response::json(array('status' => 'ok', 'message' => 'Bundle has been saved.'));
+        return Response::json(array('status' => 'ok', 'message' => 'Request has been saved.'));
 	}
 
     /**

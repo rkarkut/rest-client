@@ -20,14 +20,6 @@
                 </ul>
                 
                 <div class="form-group">
-                    {{ Form::text('firstname', null, array('class'=>'form-control input-block-level', 'placeholder'=>'First Name')) }}
-                </div>
-
-                <div class="form-group">
-                    {{ Form::text('lastname', null, array('class'=>'form-control input-block-level', 'placeholder'=>'Last Name')) }}
-                </div>
-
-                <div class="form-group">
                     {{ Form::text('email', null, array('class'=>'form-control input-block-level', 'placeholder'=>'Email Address')) }}
                 </div>
 

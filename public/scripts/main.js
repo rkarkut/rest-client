@@ -5,8 +5,6 @@ var Page = {
 
         Page.initBundleListSlider();
 
-        $('.bundle_list>a:first').click();
-
         $('.load-request').bind('click', function() {
             Page.loadRequest(this);
         });
@@ -49,6 +47,9 @@ var Page = {
             else
                 $('.page_menu').hide();
         });
+
+        $('.load-request:first').click();
+        $('.bundle_list>div:first>a:first').click();
 
     },
 
